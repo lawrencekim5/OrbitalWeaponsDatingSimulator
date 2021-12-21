@@ -1,7 +1,7 @@
 Mon Dec 13 14:53:43 2021
 Windows-8-6.2.9200
 Ren'Py 7.2.2.491
- 
+  
 
 Bootstrap to the start of init.init took 0.07s
 Early init took 0.00s
