@@ -1,0 +1,11 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 12: invalid syntax
+    define chet = Character("Chet Apichart")
+               ^
+    
+
+Ren'Py Version: Ren'Py 7.2.2.491
+Mon Dec 13 14:53:20 2021

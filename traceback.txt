@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 31, in script
+    e "You've created a new Ren'Py game."
+Exception: Sayer 'e' is not defined.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 31, in script
+    e "You've created a new Ren'Py game."
+  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 664, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 564, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
+Exception: Sayer 'e' is not defined.
+
+Windows-8-6.2.9200
+Ren'Py 7.2.2.491
+Orbital Weapons Dating Simulator 1.0
+Mon Dec 13 14:42:34 2021

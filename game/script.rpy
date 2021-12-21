@@ -3,12 +3,27 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+############
+# Characters
+############
+
+# Chet Apichart
 define chet = Character("Chet Apichart")
+
+# Sault Solper
 define saul = Character("Saul Solper")
+
+# Jory Saltman
 define jory = Character("Jory Saltman")
+
+# Riki Jespersen
 define riki = Character("Riki Jespersen")
+
+# Evelyn Sanders
 define evelyn = Character("Evelyn Sanders")
 
+
+return
 
 # The game starts here.
 
@@ -24,13 +39,13 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
+    show chet
 
     # These display lines of dialogue.
 
-    e "You've created a new Ren'Py game."
+    evelyn "You've created a new Ren'Py game."
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    evelyn "Once you add a story, pictures, and music, you can release it to the world!"
 
     # This ends the game.
 
