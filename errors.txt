@@ -2,10 +2,15 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 12: invalid syntax
-    define chet = Character("Chet Apichart")
-               ^
+File "game/script.rpy", line 97: invalid syntax
+    player_fname = renpy.input(evelyn "Please write your first name here.")
+                                                                          ^
     
 
-Ren'Py Version: Ren'Py 7.2.2.491
-Mon Dec 13 14:53:20 2021
+File "game/script.rpy", line 98: invalid syntax
+    player_lname = renpy.input(evelyn "Please write your last name here.")
+                                                                         ^
+    
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Sat Dec 25 21:59:53 2021

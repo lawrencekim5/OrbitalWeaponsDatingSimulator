@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 31, in script
-    e "You've created a new Ren'Py game."
-Exception: Sayer 'e' is not defined.
+  File "game/script.rpy", line 107, in script
+    evelyn "Pleased to meet you %(player_fname)! We're now all set to begin the interview."
+ValueError: unsupported format character '!' (0x21) at index 35
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 31, in script
-    e "You've created a new Ren'Py game."
-  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 664, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 564, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
-Exception: Sayer 'e' is not defined.
+  File "game/script.rpy", line 107, in script
+    evelyn "Pleased to meet you %(player_fname)! We're now all set to begin the interview."
+  File "renpy/ast.py", line 721, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1408, in say
+    what = what % tag_quoting_dict
+ValueError: unsupported format character '!' (0x21) at index 35
 
-Windows-8-6.2.9200
-Ren'Py 7.2.2.491
+Windows-10-10.0.19041
+Ren'Py 7.4.11.2266
 Orbital Weapons Dating Simulator 1.0
-Mon Dec 13 14:42:34 2021
+Sat Dec 25 22:11:35 2021
