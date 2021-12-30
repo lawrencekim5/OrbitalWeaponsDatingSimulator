@@ -1,22 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 107, in script
-    evelyn "Pleased to meet you %(player_fname)! We're now all set to begin the interview."
-ValueError: unsupported format character '!' (0x21) at index 35
+  File "game/script.rpy", line 61, in script
+    show evelyn angry handraised
+Exception: Image 'evelyn' does not accept attributes 'angry handraised'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 107, in script
-    evelyn "Pleased to meet you %(player_fname)! We're now all set to begin the interview."
-  File "renpy/ast.py", line 721, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1408, in say
-    what = what % tag_quoting_dict
-ValueError: unsupported format character '!' (0x21) at index 35
+  File "game/script.rpy", line 61, in script
+    show evelyn angry handraised
+  File "renpy/ast.py", line 1197, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "renpy/ast.py", line 1167, in show_imspec
+    atl=atl)
+  File "renpy/exports.py", line 742, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "renpy/display/image.py", line 409, in find_target
+    self.target = target._duplicate(a)
+  File "renpy/display/core.py", line 390, in _duplicate
+    args.extraneous()
+  File "renpy/display/core.py", line 271, in extraneous
+    " ".join(self.args),
+Exception: Image 'evelyn' does not accept attributes 'angry handraised'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 Orbital Weapons Dating Simulator 1.0
-Sat Dec 25 22:11:35 2021
+Wed Dec 29 22:19:40 2021

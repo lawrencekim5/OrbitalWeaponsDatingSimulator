@@ -2,15 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 97: invalid syntax
-    player_fname = renpy.input(evelyn "Please write your first name here.")
-                                                                          ^
-    
-
-File "game/script.rpy", line 98: invalid syntax
-    player_lname = renpy.input(evelyn "Please write your last name here.")
-                                                                         ^
-    
+File "game/script.rpy", line 103: expected menuitem
+    show evelyn_normal_handinpocket
+    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sat Dec 25 21:59:53 2021
+Wed Dec 29 21:56:51 2021

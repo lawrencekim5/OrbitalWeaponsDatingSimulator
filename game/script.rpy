@@ -20,9 +20,14 @@ define jory = Character("Jory Saltman")
 define riki = Character("Riki Jespersen")
 
 # Evelyn Sanders
-define evelyn = Character("Evelyn Sanders")
+define evelyn = Character("Evelyn Sanders", image="evelyn")
 
-
+image evelyn normal handinpocket = "images/char/evelyn/evelyn_normal_handinpocket.png"
+image evelyn normal handraised = "images/char/evelyn/evelyn_normal_handraised.png"
+image evelyn angry handinpocket = "images/char/evelyn/evelyn_angry_handinpocket.png"
+#image evelyn angry handraised = "images/char/evelyn/evelyn_angry_handraised.png"
+image evelyn happy handinpocket = "images/char/evelyn/evelyn_happy_handinpocket.png"
+image evelyn happy handraised = "images/char/evelyn/evelyn_happy_handraised.png"
 
 
 ###########
@@ -47,21 +52,20 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show evelyn_normal
+    show evelyn normal handraised
 
     # These display lines of dialogue.
 
-    # show evelyn_happy
     evelyn "Hello dear! \nI'm Evelyn Sanders, a senior accountant and HR representative at Orbital Weapons. It's very nice to meet you!"
 
-    show evelyn_normal
+    show evelyn normal handinpocket
     evelyn "I'll be conducting your interview for the internship position that you recently applied for. Don't get nervous dear, this will be very casual as the entire Orbital Weapons team was already very impressed with your resume."
     evelyn "Specifically, your involvement with SWIFT was something that we noticed. Members of that club have been known to be bound for greatness."
 
-    # show evelyn_happy
+    show evelyn happy handinpocket
     evelyn "So this interview is pretty much a formality, but it serves an important function as a way to get to know you better! \nDon't worry dear, I know you will do great."
 
-    # show evelyn_normal
+    show evelyn normal handinpocket
 
     evelyn "Before we start the interview, please write your first and last name on this form. It will be proof that you completed your interview and will also let the rest of the Orbital Weapons team know what to call you!"
 
@@ -77,21 +81,21 @@ label player_naming:
     elif papers_used == 3:
         evelyn "Please take a deep breath and write your name correctly this time. We only have so many forms to spare."
     elif papers_used == 4:
-        # show evelyn_angry
+        show evelyn angry handinpocket
         evelyn "...Dear. Are you playing some kind of practical joke? These forms are printed on matte card stock. I've paid for them out of my own pocket and they're not cheap, sweetie."
         evelyn "I've been patient so far but I am running out of forms. Please write your name correctly this time."
     elif papers_used == 5:
-        # show evelyn_angry
+        show evelyn angry handinpocket
         evelyn "I'll give you one more chance dear."
     elif papers_used == 6:
-        # show evelyn_angry
+        show evelyn angry handinpocket
         evelyn "I'll give you ONE more chance dear."
     elif papers_used == 7:
-        # show evelyn_angry
-        evelyn "You messed with the wrong lady motherfucker. I'll have you know I grew up in the streets and I'm always strapped. You've cost me over $90 in card stock, but I'm not accepting cash for payback."
+        show evelyn angry handinpocket
+        evelyn "You messed with the wrong lady, honey. I'll have you know I grew up in the streets and I'm always strapped. You've cost me over $90 in card stock, but I'm not accepting cash for payback."
         evelyn "No, you'll be paying with your life."
-        # show evelyn_gun
-        evelyn "See you later you sad fuck."
+        # show evelyn gun
+        evelyn "See you later you son of a gun."
         jump evelyn_shoots_player
 
     $ player_fname = renpy.input("Please write your first name here.")
@@ -99,11 +103,12 @@ label player_naming:
 
     define player = Character("[player_fname] [player_lname]")
 
+    show evelyn normal handinpocket
     menu:
         evelyn "So your full name is [player_fname] [player_lname], is that correct?"
 
         "Yes":
-            # show evelyn_happy
+            show evelyn happy handraised
             evelyn "Pleased to meet you [player_fname]! We're now all set to begin the interview."
 
         "No":
@@ -133,25 +138,26 @@ label player_naming:
             jump interview_q1_d
 
 label interview_q1_a:
-    # show evelyn_happy
+    show evelyn normal handinpocket
     evelyn "That is true! Orbital Weapons is a very famous and prestigious company. Working here will be a solid resume boost that will be sure to open up a lot of opportunities for you in the future!"
+    show evelyn happy handraised
     evelyn "Of course, we would very much like for you to stay and use your talents for our company."
 
 label interview_q1_b:
-    # show evelyn_happy
+    show evelyn happy handinpocket
     evelyn "That's an excellent answer! I very much detest the inequality in our society that is inherent to wealth imbalances."
     evelyn "I am very pleased to hear that you share similar thoughts. Perhaps we can chat more about this topic after the interview!"
 
 label interview_q1_c:
     # show evelyn_confused
     evelyn "That's an interesting answer dear, I am slightly concerned. I'm not quite sure if that should be the main criteria for your job hunt, but I have seen more extreme deviations in my time."
-    # show evelyn_happy
+    show evelyn happy handinpocket
     evelyn "However, as long as if you do not let your obsession disrupt your work or cause any Title 9 violations, I think that we can look past this!"
 
 label interview_q1_d:
-    # show evelyn_normal
+    show evelyn normal handinpocket
     evelyn "No need to worry dear. I was the same as you a long time ago. It was only by chance that Orbital Weapons hired me as an accountant, and I've stayed here every since!"
-    #show evelyn_happy
+    show evelyn happy handraised
     evelyn "I'm sure you won't regret taking this opportunity!"
 
 
