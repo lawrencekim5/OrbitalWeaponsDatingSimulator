@@ -4,6 +4,30 @@
 # name of the character.
 
 ############
+# Actual Nice OOP Code. It's been a long time coming
+############
+
+init python:
+    class Person:
+        def __init__(self, name, trust = 0, affection = 0):
+            self.c = name
+            self.trust = trust
+            self.affection = affection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############
 # Characters
 ############
 
@@ -30,17 +54,17 @@ image evelyn happy handinpocket = "images/char/evelyn/evelyn_happy_handinpocket.
 image evelyn happy handraised = "images/char/evelyn/evelyn_happy_handraised.png"
 
 
-###########
-# Variables
-###########
-
-
 
 return
 
 # The game starts here.
 
 label start:
+
+# Character Initializations
+
+    $ chet = Person(Character("Chet"), 0, 1)
+
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -58,6 +82,12 @@ label start:
 
     evelyn "Hello dear! \nI'm Evelyn Sanders, a senior accountant and HR representative at Orbital Weapons. It's very nice to meet you!"
 
+
+    chet.c "testing"
+
+
+
+
     show evelyn normal handinpocket
     evelyn "I'll be conducting your interview for the internship position that you recently applied for. Don't get nervous dear, this will be very casual as the entire Orbital Weapons team was already very impressed with your resume."
     evelyn "Specifically, your involvement with SWIFT was something that we noticed. Members of that club have been known to be bound for greatness."
@@ -73,6 +103,7 @@ label start:
 label player_naming:
 
     default papers_used = 0
+    default interview_points = 0
 
     if papers_used == 1:
         evelyn "I'll get you another form then. Keep in mind we don't have too many of these forms, so please make sure to write your name correctly this time"
@@ -95,7 +126,7 @@ label player_naming:
         evelyn "You messed with the wrong lady, honey. I'll have you know I grew up in the streets and I'm always strapped. You've cost me over $90 in card stock, but I'm not accepting cash for payback."
         evelyn "No, you'll be paying with your life."
         # show evelyn gun
-        evelyn "See you later you son of a gun."
+        evelyn "See you later, you son of a gun."
         jump evelyn_shoots_player
 
     $ player_fname = renpy.input("Please write your first name here.")
@@ -124,12 +155,12 @@ label player_naming:
             jump interview_q1_a
 
         "The company's mission":
-            player "I really vibe with Orbital Weapons' goal as a company. I'm sick of how only the economically blessed members of our society get to devastate countries at there whim."
-            player "It should definitely be a service available to all, which is why I want to help make that vision come to fruition."
+            player "I really vibe with Orbital Weapons' goal as a company. I'm sick of how only the economically blessed members of our society get to devastate countries at their whims."
+            player "The ability to destroy large swaths of civilization should available to all, which is why I want to help make that vision come to fruition."
             jump interview_q1_b
 
         "Chet Apichart":
-            player "I really really really really like Chet Apichart. His looks, his apitude for singing, his rocking dad bod. Forgive me if you think I said too much, but it needed to be said."
+            player "I really, really, really, really, like Chet Apichart. His looks, his apitude for singing, his rocking dad bod. Forgive me if you think I said too much, but it needed to be said."
             player "Chet Apichart is one hell of a specimen, and I would do anything to get closer to him."
             jump interview_q1_c
 
@@ -142,27 +173,49 @@ label interview_q1_a:
     evelyn "That is true! Orbital Weapons is a very famous and prestigious company. Working here will be a solid resume boost that will be sure to open up a lot of opportunities for you in the future!"
     show evelyn happy handraised
     evelyn "Of course, we would very much like for you to stay and use your talents for our company."
+    jump interview_q2
 
 label interview_q1_b:
     show evelyn happy handinpocket
     evelyn "That's an excellent answer! I very much detest the inequality in our society that is inherent to wealth imbalances."
     evelyn "I am very pleased to hear that you share similar thoughts. Perhaps we can chat more about this topic after the interview!"
+    jump interview_q2
 
 label interview_q1_c:
     # show evelyn_confused
     evelyn "That's an interesting answer dear, I am slightly concerned. I'm not quite sure if that should be the main criteria for your job hunt, but I have seen more extreme deviations in my time."
     show evelyn happy handinpocket
     evelyn "However, as long as if you do not let your obsession disrupt your work or cause any Title 9 violations, I think that we can look past this!"
+    jump interview_q2
 
 label interview_q1_d:
     show evelyn normal handinpocket
     evelyn "No need to worry dear. I was the same as you a long time ago. It was only by chance that Orbital Weapons hired me as an accountant, and I've stayed here every since!"
     show evelyn happy handraised
     evelyn "I'm sure you won't regret taking this opportunity!"
+    jump interview_q2
+
+label interview_q2:
+    show evelyn normal handinpocket
+    evelyn "Let's move on to the second question."
+    menu:
+        evelyn "I'm very interested in your involvement with SWIFT and would love to hear more about it! \nWhat role did you have in the club?"
+
+        "I am an eboard member":
+            if (player_fname == "Taylor" and player_lname == "Nyugen"):
+                player "I am the president of SWIFT! Apart from inspiring the rest of the club with my swoleness, I perform administrative outreach, handle dele"
+            else:
+                player "Yeah, I'm definitely an eboard member of SWIFT. I do a bit of eboard stuff, no biggie."
 
 
-    evelyn "2nd question."
-
+        "I am a SWIFTern":
+            player "i lied"
+        "I am a paid member":
+            player "i lied"
+        "I am a regular memeber":
+            player "i lied"
+        "I am not part of SWIFT":
+            player "i lied"
     # This ends the game.
 
     return
