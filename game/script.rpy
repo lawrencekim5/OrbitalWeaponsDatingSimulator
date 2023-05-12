@@ -7,23 +7,58 @@
 # Actual Nice OOP Code. It's been a long time coming
 ############
 
+# Classes for characers. Still not sure what attributes should be implemented. Affection seems pretty straightforward, but what else? Trust plays with suspcicion,
+
+# How the main game will play out: Orbital Weapons has fallen on som hard times after the Desolator misfire. Legal fees sapped away all of their profits, and are stsill causing them to bleed. However, Riki still believes in the company and is pushing for growth despite the company hemmorhaging money. As such, she instructs Chet Apichart to high some (unpaid) interns so that she can continue to grow the company.
+
+# Riki is pretty crazy and wants to cut costs so because she gets extremely infuriated at all the "legal bs" she has to do with. So what if the desolator cannon annihalated 3/4 of Los Angeles? She didnt cause the misfire, why does she have to deal with it? While Riki's main goal is to expand Orbital Weapons, she also has a secondary goal of creating a scapegoat to take the fault, and along with it, all the legal and monetary responsibilities, for the desolator misfire. She will then replace the scapegoat with the intern (player).
+# This is the main game mechanic, while you are getting to know the characters, Riki will make moves behind the scenes to paint the story.
+# THe sufrace-level plot has the player join the orbital weapons crew and attempt to discover the truth of the desolator misfire. Riki will imply that there is a traitor in the Orbital Weapons team,so the player will be under the impression that they need to discover who among the team caused the misfire. This is all a fabrication by Riki, the truth is that someone (Dylan Tran? some other dude) caused the misfire. For the first playthrough, the player will essentially be gaslighted into believing that someon from orbital weapons did the misfire.
+
+# Timeframe: Game takes place over the course of 30 days.
+
+# Endings:
+    # Endings will be different based on how successful Riki is in framing someone. Riki will target random characters or the first 15 days at great speed. For the next 15 days, Riki will begin to target whoever had the most suspcion points, if the otehr characters become suspicious of them too, that causes a suspcion ending. 
+    # Endigns are composed of two parts, suspicion and romance. 
+        # Suspicion: For each character that gets framed, there are two variations, normal suspicion ending, and romanced suspicion ending. Normal suspicion ending is when a characyer is framed. Romanced suspcion ending is when you're romancing the character that was framed. (Total of 6 that we have to write).
+        # Romance: For each character, there are 2 romance endings, non suspicion and suspicion. For non-suspicion, you continue to work with them at Orbital Weapons after absorbing the old person's job. For suspicion romance ending, you take the job of the person you're romancing. Ther are some branches to this ending, 1) you can betray the character by admiting you used romance to get their job (this occurs if you point them out as the traitor), 2) you can keep in touch with them but still work at orbital weapons (this is pretty depressing, the character will live in debt), 3) you can quit orbital weapons and choose to run away with them. Total of 6 endings that we need to write, with some deviations. 
+        # Riki endings. These endings are a bit special. Riki is manipulative, so there is no way of knowing if she really is affectionate for the player. She has a hidden stat that essential goes up if the player does malicious and manipualtive actions. If Real affection reaches a certain point, get the Devastation ending, romance RIki and join her in devastating landscapes for fun. If Real affection is not high enough but fake affection is, romance RIki, but she uses the opportunity to frame the player for the desolator misfire. 
+
+# Characters: 
+    # Riki Jespersen - CEO Chief Executive Officer
+        # riki: psychotic and aggressive. sees fault in everyone and never in herself. malicious and probably has multiple personalities
+    # Saul Solper - CTO Chief Technology Officer
+        # saul: sleazy and greedy. puts his own gain over everyone else. not self-aware or perceptive enough to be ashamed of what he does. not necessarily evil
+    # Chet Apichart - CFO Chief Finnancial Officer
+        # chet: laid back, chill, supportive individual. all about living life and being happy. probably smokes a lot of weed
+    # Jory Saltman - CPO Chief Product Officer
+        # jory: very incompetent at his job, but is scared of people finding out. wants to be left alone. quiet and reserved
+
+
+
+# Stats needed. Trust - how likely a character is to listen to you. Suspicion - how likely other characters think that person is suspicious. Affection - how much the character likes the player. Real affection - Riki only stat, how much Riki actually likes the player
+
+# This class initializes the Character objects
 init python:
     class Person:
-        def __init__(self, name, trust = 0, affection = 0):
-            self.c = name
+        def __init__(self, name, job, trust = 0, affection = 0, suspicion = 0, realaffection = 0):
+            self.n = name
+            self.job = job
             self.trust = trust
             self.affection = affection
+            self.suspicion = suspicion
+            self.realaffecion = realaffection
 
 
 
+        def trust_change(self, change):
+            self.trust += change
+            renpy.notify("Romance with " + str(self.n) + "by " + str(abs(change)))
 
-
-
-
-
-
-
-
+    class Player:
+        def __init__(self, fname, lname, job):
+            self.n = fname
+            self.job = job
 
 
 
@@ -63,7 +98,24 @@ label start:
 
 # Character Initializations
 
-    $ chet = Person(Character("Chet"), 0, 1)
+    # <Class>(Character("<Name>")) is proper syntax when creating character names. This makes it possible for renpy to easily create dialouge.
+
+    $ chet = Person(Character("Chet Apichart"), "Chief Technology Officer", 0, 0, 0, 0)
+
+
+
+
+    $ player_fname = renpy.input("Please write your first name here.")
+    $ player_lname = renpy.input("Please write your last name here.")
+    $ player = Player(Character("[player_fname]"), "[player_lname]", "Intern")
+
+    $ player.n("I'm a pserson now")
+
+    $ chet.n("Here is my current trust level [chet.trust]")
+
+
+    $ chet.trust_change(1)
+
 
 
     # Show a background. This uses a placeholder by default, but you can
@@ -76,14 +128,14 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show evelyn normal handraised
+    
 
     # These display lines of dialogue.
 
     evelyn "Hello dear! \nI'm Evelyn Sanders, a senior accountant and HR representative at Orbital Weapons. It's very nice to meet you!"
 
 
-    chet.c "testing"
+    chet.n "testing"
 
 
 

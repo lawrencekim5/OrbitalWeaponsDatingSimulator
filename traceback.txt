@@ -1,22 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 90, in script
-    chet.c "testing"
-Exception: Sayer 'chet.c' is not defined.
+  File "game/script.rpy", line 112, in script
+    $ player.n("I'm a pserson now")
+  File "game/script.rpy", line 112, in <module>
+    $ player.n("I'm a pserson now")
+TypeError: 'RevertableSet' object is not callable
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 90, in script
-    chet.c "testing"
-  File "renpy/ast.py", line 681, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'chet.c' is not defined.
+  File "game/script.rpy", line 112, in script
+    $ player.n("I'm a pserson now")
+  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\ast.py", line 900, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\LENOVO-PC\Desktop\renpy-7.2.2-sdk\renpy\python.py", line 1930, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 112, in <module>
+    $ player.n("I'm a pserson now")
+TypeError: 'RevertableSet' object is not callable
 
-Windows-10-10.0.19041
-Ren'Py 7.4.11.2266
+Windows-8-6.2.9200
+Ren'Py 7.2.2.491
 Orbital Weapons Dating Simulator 1.0
-Mon May  8 22:30:40 2023
+Fri May 12 16:08:58 2023
