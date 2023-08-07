@@ -41,8 +41,10 @@
 # This class initializes the Character objects
 init python:
     class Person:
-        def __init__(self, name, job, trust = 0, affection = 0, suspicion = 0, realaffection = 0):
-            self.n = name
+        def __init__(self, fullname, firstname, lastname, job, trust = 0, affection = 0, suspicion = 0, realaffection = 0):
+            self.fullname = fullname
+            self.firstname = firstname
+            self.lastname = lastname
             self.job = job
             self.trust = trust
             self.affection = affection
@@ -50,15 +52,28 @@ init python:
             self.realaffecion = realaffection
 
 
-
         def trust_change(self, change):
             self.trust += change
-            renpy.notify("Romance with " + str(self.n) + "by " + str(abs(change)))
+            if change > 0:
+                renpy.notify(str(self.fullname) + "'s trust has increased by " + str(abs(change)))
+            else:
+                renpy.notify(str(self.fullname) + "'s trust has decreased by " + str(abs(change)))
+
+        def affection_change(self, change):
+            self.affection += change
+            if change > 0:
+                renpy.notify(str(self.name) + "'s affection has increased by " + str(abs(change)))
+            else:
+                renpy.notify(str(self.name) + "'s affection has decreased by " + str(abs(change)))
 
     class Player:
-        def __init__(self, fname, lname, job):
-            self.n = fname
+        def __init__(self, fullname, firstname, lastname, job, money, karma):
+            self.fullname = fullname
+            self.firstname = firstname
+            self.lastname = lastname
             self.job = job
+            self.money = money
+            self.karma = karma
 
 
 
@@ -66,17 +81,7 @@ init python:
 # Characters
 ############
 
-# Chet Apichart
-define chet = Character("Chet Apichart")
 
-# Sault Solper
-define saul = Character("Saul Solper")
-
-# Jory Saltman
-define jory = Character("Jory Saltman")
-
-# Riki Jespersen
-define riki = Character("Riki Jespersen")
 
 # Evelyn Sanders
 define evelyn = Character("Evelyn Sanders", image="evelyn")
@@ -100,16 +105,56 @@ label start:
 
     # <Class>(Character("<Name>")) is proper syntax when creating character names. This makes it possible for renpy to easily create dialouge.
 
-    $ chet = Person(Character("Chet Apichart"), "Chief Technology Officer", 0, 0, 0, 0)
+    $ chet = Person(Character("Chet Apichart"), "Chet", "Apichart", "Chief Technology Officer", 0, 0, 0, 0)
+    $ saul = Person(Character("Saul Solper"), "Saul", "Solper", "Chief Financial Officer", 0, 0, 0, 0)
+    $ jory = Person(Character("Jory Saltman"), "Jory", "Saltman", "PLACEHOLDER", 0, 0, 0, 0)
+    $ riko = Person(Character("Riki Jespersen"), "Riki", "Jespersen", "Chief Executive Officer", 0, 0, 0, 0)
 
 
 
 
-    $ player_fname = renpy.input("Please write your first name here.")
-    $ player_lname = renpy.input("Please write your last name here.")
-    $ player = Player(Character("[player_fname]"), "[player_lname]", "Intern")
+##############
+# Story Start#
+##############
 
-    $ player.n("I'm a pserson now")
+    "It's a beautiful day at the Cal Poly Pomona Campus!"
+
+    define solicitor = Character("Solicitor", image="npc")
+    define unknown - Character("???")
+
+    
+
+    unknown "Excuse me, can I have a moment of your time?"
+
+    "A man briskly approaches you with a gleaming smile and souless eyes. You've seen this harrowed look plastered on a multitude of faces across campus."
+    "It's the face of a solicitor."
+    "You walk faster."
+
+    solicitor "Woah hey there, wait up a minute! I just want to talk about our cause for a second."
+
+    solicitor "I'm Blaine. What's your name?"
+
+    $ player_firstname = renpy.input("What's your first name?")
+    $ player_lastname = renpy.input("What's your last name?")
+    $ player = Player(Character("[player_firstname]"), "[player_lastname]", "Unemployed")
+    
+    player "I'm [player_firstname] [player_lastname]"
+
+    
+
+    
+
+    solicitor "
+
+
+
+
+
+    
+
+
+
+    $ player.fullname("I'm a pserson now")
 
     $ chet.n("Here is my current trust level [chet.trust]")
 
