@@ -120,7 +120,7 @@ label start:
 
     "It's a beautiful day at the Cal Poly Pomona Campus! The sky is an unblemished shade of blue, with nary a cloud in the sky. The grass is a vibrant verdant green, which is surprising given the current state of California's water supply."
     "But these are all sights you've seen before, so you pass on by without a second thought. For what truly makes this day beautiful isn't the idylic California weather, the awe-inspiring sight of the distant mountain ranges, nor the abundance of floral foliage."
-    "What makes this a beautiful day is actually the army of booths emblazoned with corporate logos spread across the College of Business buildings. A look is all it takes to make you salvitate at the prospect of landing an internship with a top cybersecurity company."
+    "What makes this a beautiful day is actually the army of booths emblazoned with corporate logos spread across the College of Business buildings. One look is all it takes to make you salvitate at the prospect of landing an internship with a top cybersecurity company."
     "That's right, today is Career Fair Day!"
 
     define solicitor = Character("Solicitor", image="npc")
@@ -128,7 +128,7 @@ label start:
 
     unknown "Excuse me, can I have a moment of your time?"
 
-    "A man calls out to you, bringing you back to your sense. He briskly approaches you with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes. A cursory glance at his clipboard and pen tell you everything you need to know. You've seen his kind many times before."
+    "You turn your head to see a man calling out to you, bringing you back to your senses. He briskly approaches with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes. A cursory glance at his clipboard and pen tell you everything you need to know. You've seen his kind many times before."
     "It's a solicitor."
     "You walk faster."
 
