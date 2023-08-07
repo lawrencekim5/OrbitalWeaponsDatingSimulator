@@ -67,14 +67,17 @@ init python:
                 renpy.notify(str(self.name) + "'s affection has decreased by " + str(abs(change)))
 
     class Player:
-        def __init__(self, fullname, firstname, lastname, job, money, karma, fitness):
+        def __init__(self, fullname, firstname, lastname, job, money, positivekarma, negativekarma, fitness, intelligence, charisma):
             self.fullname = fullname
             self.firstname = firstname
             self.lastname = lastname
             self.job = job
             self.money = money
-            self.karma = karma
+            self.postivekarma = positivekarma
+            self.negativekarma = negativekarma
             self.fitness = fitness
+            self.intelligence = intelligence
+            self.charisma = charisma
 
 
 
@@ -121,14 +124,14 @@ label start:
     "It's a beautiful day at the Cal Poly Pomona Campus! The sky is an unblemished shade of blue, with nary a cloud in the sky. The grass is a vibrant verdant green, which is surprising given the current state of California's water supply."
     "But these are all sights you've seen before, so you pass on by without a second thought. For what truly makes this day beautiful isn't the idylic California weather, the awe-inspiring sight of the distant mountain ranges, nor the abundance of floral foliage."
     "What makes this a beautiful day is actually the army of booths emblazoned with corporate logos spread across the College of Business buildings. One look is all it takes to make you salvitate at the prospect of landing an internship with a top cybersecurity company."
-    "That's right, today is Career Fair Day!"
+    "That's right, today is the CPP Cybersecurity Career Fair!"
 
     define solicitor = Character("Solicitor", image="npc")
     define unknown - Character("???")
 
     unknown "Excuse me, can I have a moment of your time?"
 
-    "You turn your head to see a man calling out to you, bringing you back to your senses. He briskly approaches with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes. A cursory glance at his clipboard and pen tell you everything you need to know. You've seen his kind many times before."
+    "You turn your head to see a man calling out to you, bringing you back to your senses. He briskly approaches with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes. A cursory glance at his clipboard and pen tells you everything you need to know. Afterall, you've seen his kind many times before."
     "It's a solicitor."
     "You walk faster."
 
@@ -145,11 +148,9 @@ label start:
     
     player "I'm [player_firstname] [player_lastname]"
 
-    solicitor "
+    solicitor "Hi [player_firstname], nice to meet you! 
 
-
-
-
+# solicitor gets information, playe gets option to: 1) pay solicitor (blaine WONT remember this) (morality), 2) beatup solicitor (blain WILL remember this) (fitness), 3) leave (charisma). Whichever option is picked, player is late to career fair and every company is gone, except for Chet Apichart who is also late. This is how player gets to intern at orbital weapons.
 
     
 
