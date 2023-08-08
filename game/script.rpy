@@ -66,6 +66,11 @@ init python:
             else:
                 renpy.notify(str(self.name) + "'s affection has decreased by " + str(abs(change)))
 
+
+
+
+
+
     class Player:
         def __init__(self, fullname, firstname, lastname, job, money, positivekarma, negativekarma, fitness, intelligence, charisma):
             self.fullname = fullname
@@ -182,7 +187,7 @@ label start:
     evelyn "Hello dear! \nI'm Evelyn Sanders, a senior accountant and HR representative at Orbital Weapons. It's very nice to meet you!"
 
 
-    chet.n "testing"
+    chet.fullname "testing"
 
 
 
