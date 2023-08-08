@@ -52,6 +52,7 @@ init python:
             self.realaffecion = realaffection
 
 
+# Character stat change functions
         def trust_change(self, change):
             self.trust += change
             if (change > 0):
@@ -66,24 +67,78 @@ init python:
             else:
                 renpy.notify(str(self.name) + "'s affection has decreased by " + str(abs(change)))
 
+        def realaffection_change(self, change):
+            self.realaffection += change
+            if (change > 0):
+                renpy.notify(str(self.name) + "'s real affection has increased by " + str(abs(change)))
+            else:
+                renpy.notify(str(self.name) + "'s real affection has decreased by " + str(abs(change)))
 
-
+        def suspicion_change(self, change):
+            self.suspicion += change
+            if (change > 0):
+                renpy.notify(str(self.name) + "looks to be a little more suspicious.")
+            else:
+                renpy.notify(str(self.name) + "is less suspicious now.")
 
 
 
     class Player:
-        def __init__(self, fullname, firstname, lastname, job, money, positivekarma, negativekarma, fitness, intelligence, charisma):
+        def __init__(self, fullname, firstname, lastname, job, money, karma, fitness, intelligence, charisma):
             self.fullname = fullname
             self.firstname = firstname
             self.lastname = lastname
             self.job = job
             self.money = money
-            self.postivekarma = positivekarma
-            self.negativekarma = negativekarma
+            self.karma = karma
             self.fitness = fitness
             self.intelligence = intelligence
             self.charisma = charisma
 
+# player stat change functions
+
+        def money_change(self, change):
+            self.money += money
+            if (change > 0):
+                renpy.notify("You got $" + str(abs(change)) + " dollars.))
+            else:
+                renpy.notify("Your lost $" + str(abs(change)) + " dollars.")
+
+
+        def karma_change(self, change):
+            self.karma += change
+            if (change > 0):
+                positivekarma += change
+                # replace notification message with justice scale, suddent tilt to the right
+                # add bar indicating total morality. this is identified by the karma value. poskarma and negkarm are separete values for dialouge branches
+                renpy.notify("Your karma has increased by " + str(abs(change)))
+            else:
+                negativekarma += abs(change)
+                # replace notification message with justice scale, suddent tilt to the left
+                renpy.notify("Your karma has decreased by " + str(abs(change)))		
+
+
+        def fitness_change(self, change):
+            self.fitness += change
+            if (change > 0):
+                renpy.notify("Your fitness has increased by " + str(abs(change)))
+            else:
+                renpy.notify("Your fitness has decreased by " + str(abs(change)))
+
+        def intelligence_change(self, change):
+            self.intelligence += change
+            if (change > 0):
+                renpy.notify("Your intelligence has increased by " + str(abs(change)))
+            else:
+                renpy.notify("Your intelligence has decreased by " + str(abs(change)))
+
+
+        def charisma_change(self, change):
+            self.charisma += change
+            if (change > 0):
+                renpy.notify("Your charisma has increased by " + str(abs(change)))
+            else:
+                renpy.notify("Your charisma has decreased by " + str(abs(change)))
 
 
 ############
@@ -151,9 +206,47 @@ label start:
     $ player_lastname = renpy.input("What's your last name?")
     $ player = Player(Character("[player_firstname]"), "[player_lastname]", "Unemployed")
     
-    player "I'm [player_firstname] [player_lastname]"
+    player "I'm [player_firstname]."
 
-    solicitor "Hi [player_firstname], nice to meet you! 
+    solicitor "Hi [player_firstname], nice to meet you! Could I take a moment of your time to tell you about this charity I'm running? We're working towards 
+
+    menu:
+        solicitor "If you are willing to be genererous and provide a small donation, it would go a long way towards helping our cause. How about it?"
+
+        "Donate $10":
+            "It sounds like its for a good cause, and its not like you're in desperate need of money. Cal Poly Pomona is notoriously affordable. You can spare $10 to help the less fortunate."
+            player "Sure, I can donate. Here's $10."
+            player.money__change(-10)
+            player.karma_change(1)
+
+            menu:
+                solicitor "...That's it? C'mon, you can do better than that! I can easily see that you have at least have $289 in your wallet right now."
+
+                "Donate $10 more":
+                    "You fork over an addition $10."
+                    solicitor "Wow thanks. Now I can afford to feed a family for two days instead of one."
+                    player "I thought your charity was trying to save the coral reefs?"
+                    solicitor "Huh? Oh... yeah, we are. W-what did I just say?"
+
+                    menu: 
+                        solicitor "Actually don't answer that. Could you donate some more though? I have a daily quota of $500 and I only need $480 more to reach it."
+
+                        "Donate more":
+                            donateamount = renpy.input("How much do you want to donate? You have $280 remaining.")
+
+
+
+                "Leave":
+                
+
+
+        "Make an excuse and leave":
+            player "I'm sorry, I'm a bit busy right now. Maybe next time."
+            solicitor "Mhm, that's what they all say. Fuck off loser."
+
+        "Teach him a lesson he won't forget":
+        
+    
 
 # solicitor gets information, playe gets option to: 1) pay solicitor (blaine WONT remember this) (morality), 2) beatup solicitor (blain WILL remember this) (fitness), 3) leave (charisma). Whichever option is picked, player is late to career fair and every company is gone, except for Chet Apichart who is also late. This is how player gets to intern at orbital weapons.
 
