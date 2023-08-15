@@ -84,10 +84,10 @@ init python:
 
 
     class Player:
-        def __init__(self, fullname, firstname, lastname, job, money, karma, fitness, intelligence, charisma):
+        def __init__(self, fullname, job, money, karma, fitness, intelligence, charisma):
             self.fullname = fullname
-            self.firstname = firstname
-            self.lastname = lastname
+            self.firstname = player_firstname
+            self.lastname = player_lastname
             self.job = job
             self.money = money
             self.karma = karma
@@ -98,11 +98,12 @@ init python:
 # player stat change functions
 
         def money_change(self, change):
-            self.money += money
+            self.money += change
             if (change > 0):
-                renpy.notify("You got $" + str(abs(change)) + " dollars.))
+                renpy.notify("You got $" + str(abs(change)) + " dollars.")
+
             else:
-                renpy.notify("Your lost $" + str(abs(change)) + " dollars.")
+                renpy.notify("You lost $" + str(abs(change)) + " dollars.")
 
 
         def karma_change(self, change):
@@ -115,7 +116,7 @@ init python:
             else:
                 negativekarma += abs(change)
                 # replace notification message with justice scale, suddent tilt to the left
-                renpy.notify("Your karma has decreased by " + str(abs(change)))		
+                renpy.notify("Your karma has decreased by " + str(abs(change)))
 
 
         def fitness_change(self, change):
@@ -181,17 +182,38 @@ label start:
 # Story Start#
 ##############
 
-    "It's a beautiful day at the Cal Poly Pomona Campus! The sky is an unblemished shade of blue, with nary a cloud in the sky. The grass is a vibrant verdant green, which is surprising given the current state of California's water supply."
-    "But these are all sights you've seen before, so you pass on by without a second thought. For what truly makes this day beautiful isn't the idylic California weather, the awe-inspiring sight of the distant mountain ranges, nor the abundance of floral foliage."
-    "What makes this a beautiful day is actually the army of booths emblazoned with corporate logos spread across the College of Business buildings. One look is all it takes to make you salvitate at the prospect of landing an internship with a top cybersecurity company."
+# PROLOUGE
+
+    # show CPP road
+    "It's a beautiful day at the Cal Poly Pomona Campus!"
+
+    scene sky
+    "The sky is an unblemished shade of blue, with nary a cloud in the sky."
+    
+    
+    # show grass
+    "The grass is a vibrant verdant green, which is surprising given the current state of California's water supply."
+    
+    # show cpp road
+    "But these are all sights you've seen before, so you pass on by without a second thought."
+    
+    "For today's beauty isn't derived from the idylic California weather, the awe-inspiring sight of the distant mountain ranges, nor the environmentally concerning abundance of floral foliage..."
+    "Your enthrallment is actually owed to the army of booths spread across the College of Business buildings, all emblazoned with corporate logos and ready to recruit."
+    "One look is all it takes to make you salvitate at the prospect of landing an internship with a top cybersecurity company."
     "That's right, today is the CPP Cybersecurity Career Fair!"
 
     define solicitor = Character("Solicitor", image="npc")
-    define unknown - Character("???")
+    define unknown = Character("???")
 
     unknown "Excuse me, can I have a moment of your time?"
 
-    "You turn your head to see a man calling out to you, bringing you back to your senses. He briskly approaches with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes. A cursory glance at his clipboard and pen tells you everything you need to know. Afterall, you've seen his kind many times before."
+    "You turn your head to see a man calling out to you, bringing you back to your senses."
+
+    "He briskly approaches with the speed of an 8-year old child and the audacity of a 9-year old child, all while maintaining a gleaming smile that's betrayed by his souless eyes."
+    # quick approach to the screen zoom in a lot
+    "You step back."
+
+    "A cursory glance at his clipboard and pen tells you everything you need to know. Afterall, you've seen his kind many times before."
     "It's a solicitor."
     "You walk faster."
 
@@ -203,21 +225,29 @@ label start:
     solicitor "Nice to meet you! I'm Blaine. What's your name?"
 
     $ player_firstname = renpy.input("What's your first name?")
-    $ player_lastname = renpy.input("What's your last name?")
-    $ player = Player(Character("[player_firstname]"), "[player_lastname]", "Unemployed")
-    
-    player "I'm [player_firstname]."
+    $ player_firstname = player_firstname.strip()
+    if player_firstname == "":
+        $ player_firstname = "Jacob"
 
-    solicitor "Hi [player_firstname], nice to meet you! Could I take a moment of your time to tell you about this charity I'm running? We're working towards 
+    $ player_lastname = renpy.input("What's your last name?")
+    $ player_lastname = player_lastname.strip()
+    if player_lastname == "":
+        $ player_lastname = "Jayme"
+
+    $ player = Player(Character("[player_firstname] [player_lastname]"), "Unemployed", 300, 0, 0, 0, 0)
+
+    player.fullname "I'm [player_firstname]."
+
+    solicitor "Hi [player_firstname], nice to meet you! Could I take a moment of your time to tell you about this charity I'm running? We're working towards something_________"
 
     menu:
         solicitor "If you are willing to be genererous and provide a small donation, it would go a long way towards helping our cause. How about it?"
 
         "Donate $10":
             "It sounds like its for a good cause, and its not like you're in desperate need of money. Cal Poly Pomona is notoriously affordable. You can spare $10 to help the less fortunate."
-            player "Sure, I can donate. Here's $10."
-            player.money__change(-10)
-            player.karma_change(1)
+            player.fullname "Sure, I can donate. Here's $10."
+            $ player.money_change(-10)
+            $ player.karma_change(1)
 
             menu:
                 solicitor "...That's it? C'mon, you can do better than that! I can easily see that you have at least have $289 in your wallet right now."
@@ -225,27 +255,29 @@ label start:
                 "Donate $10 more":
                     "You fork over an addition $10."
                     solicitor "Wow thanks. Now I can afford to feed a family for two days instead of one."
-                    player "I thought your charity was trying to save the coral reefs?"
+                    player.fullname "I thought your charity was trying to save the coral reefs?"
                     solicitor "Huh? Oh... yeah, we are. W-what did I just say?"
 
                     menu: 
                         solicitor "Actually don't answer that. Could you donate some more though? I have a daily quota of $500 and I only need $480 more to reach it."
 
                         "Donate more":
-                            donateamount = renpy.input("How much do you want to donate? You have $280 remaining.")
+                            $ donateamount = renpy.input("How much do you want to donate? You have $280 remaining.")
 
 
 
                 "Leave":
+                    "you laeve AS A PLACEHOLDER"
                 
 
 
         "Make an excuse and leave":
-            player "I'm sorry, I'm a bit busy right now. Maybe next time."
+            player.fullname "I'm sorry, I'm a bit busy right now. Maybe next time."
             solicitor "Mhm, that's what they all say. Fuck off loser."
 
         "Teach him a lesson he won't forget":
-        
+            "you beat him up"
+            $ player.fitness_change(1)
     
 
 # solicitor gets information, playe gets option to: 1) pay solicitor (blaine WONT remember this) (morality), 2) beatup solicitor (blain WILL remember this) (fitness), 3) leave (charisma). Whichever option is picked, player is late to career fair and every company is gone, except for Chet Apichart who is also late. This is how player gets to intern at orbital weapons.
@@ -255,8 +287,9 @@ label start:
 
 
     $ player.fullname("I'm a pserson now")
+    chet.fullname "here's my current trust level [chet.trust]"
 
-    $ chet.n("Here is my current trust level [chet.trust]")
+    $ chet.fullname("Here is my current trust level [chet.trust]")
 
 
     $ chet.trust_change(1)
