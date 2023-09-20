@@ -1,22 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 830, in script
-    player.fulfill "I've never hurt a soul in my life."
-Exception: Sayer 'player.fulfill' is not defined.
+While processing the idle_color property of style button_text:
+  File "renpy/common/00start.rpy", line 80, in _init_language
+    renpy.change_language(language)
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+Exception: Color string u'#0d2fa1' must be 3, 4, 6, or 8 hex digits long.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 830, in script
-    player.fulfill "I've never hurt a soul in my life."
-  File "renpy/ast.py", line 681, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'player.fulfill' is not defined.
+  File "renpy/bootstrap.py", line 331, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 662, in main
+    run(restart)
+  File "renpy/main.py", line 78, in run
+    renpy.translation.init_translation()
+  File "renpy/translation/__init__.py", line 561, in init_translation
+    renpy.store._init_language() # @UndefinedVariable
+  File "renpy/common/00start.rpy", line 80, in _init_language
+    renpy.change_language(language)
+  File "renpy/translation/__init__.py", line 650, in change_language
+    i()
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+  File "style.pyx", line 795, in renpy.style.rebuild
+  File "style.pyx", line 788, in renpy.style.build_styles
+  File "style.pyx", line 680, in renpy.style.build_style
+  File "style.pyx", line 709, in renpy.style.build_style
+  File "style.pyx", line 706, in renpy.style.build_style
+  File "gen-static/style_idle_functions.pyx", line 540, in style_idle_functions.idle_color_property
+  File "renpy/color.py", line 165, in __new__
+    raise Exception("Color string {!r} must be 3, 4, 6, or 8 hex digits long.".format(c))
+Exception: Color string u'#0d2fa1' must be 3, 4, 6, or 8 hex digits long.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 OrbitalWeaponsDatingSimulator 1.0
-Tue Sep 19 21:12:53 2023
+Tue Sep 19 22:20:47 2023
