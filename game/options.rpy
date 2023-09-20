@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Orbital Weapons Dating Simulator")
+define config.name = _("OrbitalWeaponsDatingSimulator")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -42,8 +42,9 @@ define build.name = "OrbitalWeaponsDatingSimulator"
 
 ## Sounds and music ############################################################
 
-## These three variables control which mixers are shown to the player by
-## default. Setting one of these to False will hide the appropriate mixer.
+## These three variables control, among other things, which mixers are shown
+## to the player by default. Setting one of these to False will hide the
+## appropriate mixer.
 
 define config.has_sound = True
 define config.has_music = True
@@ -142,7 +143,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "OrbitalWeaponsDatingSimulator-1639371166"
+define config.save_directory = "OrbitalWeaponsDatingSimulator-1694923211"
 
 
 ## Icon ########################################################################
@@ -193,11 +194,6 @@ init python:
 
     build.documentation('*.html')
     build.documentation('*.txt')
-
-## Set this to a string containing your Apple Developer ID Application to enable
-## codesigning on the Mac. Be sure to change it to your own Apple-issued ID.
-
-# define build.mac_identity = "Developer ID Application: Guy Shy (XHTE5H7Z42)"
 
 
 ## A Google Play license key is required to download expansion files and perform

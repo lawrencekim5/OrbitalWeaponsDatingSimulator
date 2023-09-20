@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 111: invalid syntax
-            default positivekarma = 0
-                                 ^
-    
+File "game/script.rpy", line 174: Line is indented, but the preceding default statement statement does not expect a block. Please check this line's indentation.
+    $ flag_solicitorbeatdown = False
+    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Aug 15 18:42:44 2023
+Tue Sep 19 20:09:36 2023
