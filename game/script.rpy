@@ -311,7 +311,7 @@ label start:
         yanchor 0.5 
         linear .1 zoom 1
     "You step back."
-    "A cursory glance at his clipboard and pen tells you everything you need to know. Afterall, you've seen his kind many times before."
+    "A cursory glance at his clipboard and pen tells you everything you need to know. After all, you've seen his kind many times before."
 
     hide unknownsolicitor_normal
     show solicitor_normal
@@ -385,7 +385,7 @@ label start:
 
     
     solicitor "Thanks for stopping though, I really appreciate it. Could I take a moment of your time to tell you about this charity I'm running? We're working towards saving the coral reefs in Florida."
-    solicitor "With climate change increasing ocean acidification, we're at major risk of unprecedented loss of biodiversity within our ocean's ecosystems! The coral reefs are a huge provider of food, medicine... it's just important for life in general!"
+    solicitor "With climate change increasing ocean acidification, we're at major risk of unprecedented loss of biodiversity within our ocean's ecosystems! The coral reefs are a huge provider of food, medicine... they're just important for life in general!"
 
     menu:
         solicitor "If you are willing to be genererous and provide a small donation, it would go a long way towards helping our cause. How about it?"
@@ -647,10 +647,10 @@ label start:
                                 menu:
                                     chet.fullname "I still feel very bad about it though. Let me make it up to you! There's a great sushi place near Diamond Bar, how about it?"
 
-                                    "No":
+                                    "No.":
                                         player.fullname "No."
                                         chet.fullname "I see.... That's okay, I'll just treat you next time!"
-                                        chet.fullname "It was nice to meet you [player.firstname]. You're a very interesting person! I feel like you would fit right in at Orbital Weapons. See you around!"
+                                        chet.fullname "It was nice to meet you [player_firstname]. You're a very interesting person! I feel like you would fit right in at Orbital Weapons. See you around!"
                                         hide chet with dissolve
                                         "Chet smiles at you and leaves. Not that he ever stopped smiling in the first place."
                                         "It was slightly disconcerting."
@@ -669,7 +669,7 @@ label start:
                                 player.fullname "Thank you Dr. Pike!"
                                 hide pike with dissolve
                                 player.fullname "...I love you."
-                                "Pike isn't here to here your final words. But don't worry! He knows that all his students love him."
+                                "Dr. Pike isn't here to here your final words. But don't worry! He knows that all his students love him."
                                 "{i}Have fun completing the CTF!{i}"
                                 jump ending
 
@@ -686,9 +686,10 @@ label prologue2:
             chet.fullname "In this sense, I see our work as something profoundly noble! I hope you will come to see it that way too."
         "Nuking cities? Sign me up!":
             player.fullname "Nuking cities? SIGN ME UP!"
-            "You don't want to offend the person who's capable of blowing up you and your entire family."
+            "You try your best to sound as enthusiastic as possible. You don't want to offend the person who's capable of blowing up you and your entire family."
             $ player.intelligence_change(1)
-            "{i}That's actually a really smart move! You feel your brain enlarge as your intelligence increases to [player.intelligence]"
+            "{i}That's actually a really smart move! You feel your brain enlarge as your intelligence increases to [player.intelligence]!"
+            "Or maybe you DO like the idea of ruining the lives millions of people? It's hard to tell when you haven't had that many karma checks yet."
             chet.fullname "Haha! That's the spirit! Most people shy away from our company after hearing about the gigantic scale of our services, but I think you're a perfect fit!"
 
     chet.fullname "Now that you know a little about the company, do you have any questions that you would like to ask?"
@@ -738,7 +739,7 @@ label prologue2:
                     xanchor 0.5  
                     yanchor 0.5                
                 chet.fullname "Lastly, we have me, the Chief Financial Officer! I'm in charge of budgets, cost predictions, and making sure we're compliant with any financial regulations."
-                chet.fullname "My job entails a magnitude of strategic decision making, which I love! Being responsible for managing the company's cash flows provides me with a unique vantage point to witness our company's growth firsthand. It's very fulfilling job!"
+                chet.fullname "My job entails a magnitude of strategic decision making, which I love! Being responsible for managing the company's cash flows provides me with a unique vantage point to witness our company's growth firsthand. It's a very fulfilling job!"
 
             "What would I do as an intern?":
                 $ questionasked1 = True
@@ -787,7 +788,7 @@ label prologue2:
             "Yes":
                 player.fullname "Absolutely! When can I start?"
                 $ chet.affection_change(1)
-                "{i}Chet becomes visibly happy. The fact that this possible given his perpetual smile is indicative of just how happy you made him. Your affection with chet increases to [chet.affection]!{i}"
+                "{i}Chet becomes visibly happy. The fact that this is even possible given his perpetual smile is indicative of just how happy you made him. Your affection with Chet Apichart increases to [chet.affection]!{i}"
                 
             "No":
                 player.fullname "Not really."
@@ -833,7 +834,7 @@ label prologue2:
         chet.fullname "Perfect! I can tell by the look in your eyes that you aren't lying!"
     chet.fullname "I'm going to head back to HQ to tell everyone! It was very nice to meet you [player_firstname], I'll see you soon!"
     hide chet with dissolve
-    "And so begins your story at Orbital Weapon, as well as the flood of unanswered questions that always accompany the start of a new chapter in your life."
+    "And so begins your story at Orbital Weapons, as well as the flood of unanswered questions that always accompany the start of a new chapter in your life."
     "Will you reach financial stability?"
     "Will you find love?"
     "Will you accelerate the Earth's unsustainable rate of global warming by nuking California's major cities?"
